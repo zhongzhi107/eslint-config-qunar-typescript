@@ -6,7 +6,7 @@
 // 提交代码时会在服务器端执行 eslint 做校验
 // 通过参数解析获取到仓库地址，默认使用 `src`
 const argv = JSON.parse(process.env.npm_config_argv);
-const sourceDir = argv.original.length === 3 ? original[2] : 'src';
+const sourceDir = argv.original.length === 3 ? argv.original[2] : 'src';
 
 module.exports = {
   extends: ['eslint-config-qunar-base'].map(require.resolve),
@@ -19,7 +19,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.mjs', '.js', '.ts', '.json'],
+        extensions: ['.js', '.ts', '.mjs', '.json'],
         paths: [sourceDir]
       }
     },
